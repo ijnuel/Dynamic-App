@@ -18,7 +18,7 @@ namespace Application.Models.Dtos
             } 
             set
             {
-                _choices = Type == QuestionType.YesNo || Type == QuestionType.MultipleChoice ? value : new();
+                _choices = Type == QuestionType.Dropdown || Type == QuestionType.MultipleChoice ? value : new();
             }
         }
         private bool _isOtherOptionEnabled { get; set; }
@@ -63,7 +63,7 @@ namespace Application.Models.Dtos
             {
                 if (question.Type == QuestionType.Dropdown || question.Type == QuestionType.MultipleChoice)
                 {
-                    if (!question.Choices.Any())
+                    if (question.Choices == null || !question.Choices.Any())
                     {
                         errorMessages.Add($"Please include choices for '{question.Question}'");
                     }

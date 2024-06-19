@@ -22,9 +22,9 @@ namespace Application.Models.Dtos
             RuleFor(x => x.Title).NotNull().NotEmpty();
             RuleFor(x => x).Must(section =>
             {
-                if (!section.Questions?.Any() ?? false)
+                if (section.Questions == null || !section.Questions.Any())
                 {
-                    errorMessages.Add($"Please add questions to {section.Title}");
+                    errorMessages.Add($"Please add questions to '{section.Title}'");
                 }
                 DynamicQuestionValidator validationRules = new DynamicQuestionValidator();
                 foreach (var question in section.Questions ?? new())

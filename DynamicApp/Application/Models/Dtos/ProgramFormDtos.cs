@@ -38,7 +38,7 @@ namespace Application.Models.Dtos
             RuleFor(x => x).Must(programForm =>
             {
                 FormSectionValidator validationRules = new FormSectionValidator();
-                foreach (var section in programForm.Sections)
+                foreach (var section in programForm.Sections ?? new())
                 {
                     var validationResult = validationRules.Validate(section);
                     if (!validationResult.IsValid)
