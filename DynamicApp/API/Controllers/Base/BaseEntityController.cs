@@ -24,14 +24,14 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        public async Task<ActionResult<Result<List<TDto>>>> GetAll()
+        public async Task<ActionResult<ResponseModel<List<TDto>>>> GetAll()
         {
             var result = await _baseService.GetAll<TDto, TEntity>(x => !x.IsArchived);
             if (result == null)
             {
-                return NotFound(Result<List<TDto>>.Failure());
+                return NotFound(ResponseModel<List<TDto>>.Failure());
             }
-            return Ok(Result<List<TDto>>.Success(result));
+            return Ok(ResponseModel<List<TDto>>.Success(result));
         }
 
         [HttpGet]
@@ -40,14 +40,14 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        public async Task<ActionResult<Result<PaginatedResult<TDto>>>> GetAllPaginated(int start = 0, int recordsPerPage = int.MaxValue, string searchText = "")
+        public async Task<ActionResult<ResponseModel<PaginatedResult<TDto>>>> GetAllPaginated(int start = 0, int recordsPerPage = int.MaxValue, string searchText = "")
         {
             var result = await _baseService.GetAllPaginated<TDto, TEntity>(x => !x.IsArchived, start, recordsPerPage, searchText);
             if (result == null)
             {
-                return NotFound(Result<PaginatedResult<TDto>>.Failure());
+                return NotFound(ResponseModel<PaginatedResult<TDto>>.Failure());
             }
-            return Ok(Result<PaginatedResult<TDto>>.Success(result));
+            return Ok(ResponseModel<PaginatedResult<TDto>>.Success(result));
         }
 
         [HttpGet]
@@ -56,14 +56,14 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        public async Task<ActionResult<Result<TDto>>> GetById(Guid id)
+        public async Task<ActionResult<ResponseModel<TDto>>> GetById(Guid id)
         {
             var result = await _baseService.GetOne<TDto, TEntity>(x => x.Id == id);
             if (result == null)
             {
-                return NotFound(Result<TDto>.Failure());
+                return NotFound(ResponseModel<TDto>.Failure());
             }
-            return Ok(Result<TDto>.Success(result));
+            return Ok(ResponseModel<TDto>.Success(result));
         }
 
         [HttpGet]
@@ -72,11 +72,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<bool>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<bool>), 200)]
         public async Task<IActionResult> Exists(Guid id)
         {
             var result = await _baseService.Exists<TEntity>(x => x.Id == id);
-            return Ok(Result<bool>.Success(result));
+            return Ok(ResponseModel<bool>.Success(result));
         }
 
         [HttpGet]
@@ -85,11 +85,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<int>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<int>), 200)]
         public async Task<IActionResult> Count(Guid id)
         {
             var result = await _baseService.Count<TEntity>(x => x.Id == id);
-            return Ok(Result<int>.Success(result));
+            return Ok(ResponseModel<int>.Success(result));
         }
 
         [HttpPost]
@@ -98,11 +98,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<string>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<string>), 200)]
         public async Task<IActionResult> Create([FromBody] TCreateRequest entityRequest)
         {
             var result = await _baseService.InsertEntity<TCreateRequest, TEntity>(entityRequest);
-            return Ok(Result<string>.Success(result));
+            return Ok(ResponseModel<string>.Success(result));
         }
 
         [HttpPut]
@@ -111,11 +111,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<string>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<string>), 200)]
         public async Task<IActionResult> Update([FromBody] TUpdateRequest entityRequest)
         {
             var result = await _baseService.UpdateEntity<TUpdateRequest, TEntity>(entityRequest);
-            return Ok(Result<string>.Success(result));
+            return Ok(ResponseModel<string>.Success(result));
         }
 
         [HttpDelete]
@@ -124,11 +124,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<bool>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<bool>), 200)]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _baseService.DeleteEntity<TEntity>(id);
-            return Ok(Result<bool>.Success(result));
+            return Ok(ResponseModel<bool>.Success(result));
         }
 
         [HttpPost]
@@ -137,11 +137,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<int>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<int>), 200)]
         public async Task<IActionResult> CreateMany([FromBody] List<TCreateRequest> entityRequest)
         {
             var result = await _baseService.InsertEntity<TCreateRequest, TEntity>(entityRequest);
-            return Ok(Result<int>.Success(result));
+            return Ok(ResponseModel<int>.Success(result));
         }
 
         [HttpPut]
@@ -150,11 +150,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<int>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<int>), 200)]
         public async Task<IActionResult> UpdateMany([FromBody] List<TUpdateRequest> entityRequest)
         {
             var result = await _baseService.UpdateEntity<TUpdateRequest, TEntity>(entityRequest);
-            return Ok(Result<int>.Success(result));
+            return Ok(ResponseModel<int>.Success(result));
         }
 
         [HttpPost]
@@ -163,11 +163,11 @@ namespace API.Controllers.Base
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<int>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<int>), 200)]
         public async Task<IActionResult> DeleteMany(List<Guid> id)
         {
             var result = await _baseService.DeleteEntity<TEntity>(id);
-            return Ok(Result<int>.Success(result));
+            return Ok(ResponseModel<int>.Success(result));
         }
     }
 }

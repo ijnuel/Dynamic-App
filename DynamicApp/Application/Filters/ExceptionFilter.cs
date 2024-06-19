@@ -20,7 +20,7 @@ namespace Application.Filters
             context.Result = new ContentResult
             {
                 StatusCode = 500,
-                Content = JsonSerializer.Serialize(Result<string>.Exception(exception))
+                Content = JsonSerializer.Serialize(ResponseModel<string>.Exception(exception))
             };
         }
     }

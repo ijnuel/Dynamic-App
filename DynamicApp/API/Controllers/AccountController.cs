@@ -24,32 +24,32 @@ namespace API.Controllers
         [Route("[action]")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 200)]
         public async Task<IActionResult> CreateAccount(CreateUserDto userDto)
         {
             var (successfulCreate, result) = await _userService.CreateUser(userDto);
             if (successfulCreate)
             {
-                return Ok(Result<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
+                return Ok(ResponseModel<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
             }
-            return BadRequest(Result<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
+            return BadRequest(ResponseModel<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
         }
 
         [HttpPost]
         [Route("[action]")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 200)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 401)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 403)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 401)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 403)]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
             var (successfulLogin, result) = await _userService.Login(userLoginDto);
             if (successfulLogin)
             {
-                return Ok(Result<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
+                return Ok(ResponseModel<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
             }
-            return BadRequest(Result<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
+            return BadRequest(ResponseModel<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
         }
 
 
@@ -58,17 +58,17 @@ namespace API.Controllers
         [Route("[action]")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 200)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 401)]
-        [ProducesResponseType(typeof(Result<UserResponseDto>), 403)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 401)]
+        [ProducesResponseType(typeof(ResponseModel<UserResponseDto>), 403)]
         public async Task<IActionResult> Logout()
         {
             var (successfulLogin, result) = await _userService.Logout();
             if (successfulLogin)
             {
-                return Ok(Result<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
+                return Ok(ResponseModel<UserResponseDto>.Success(result.Message.FirstOrDefault() ?? "", result));
             }
-            return BadRequest(Result<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
+            return BadRequest(ResponseModel<UserResponseDto>.Failure(result.Message.FirstOrDefault() ?? "", result));
         }
     }
 }

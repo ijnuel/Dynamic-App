@@ -24,14 +24,14 @@ namespace API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        public async Task<ActionResult<Result<List<FormResponsesResponseDto>>>> GetResponsesByProgramFormId(Guid id)
+        public async Task<ActionResult<ResponseModel<List<FormResponsesResponseDto>>>> GetResponsesByProgramFormId(Guid id)
         {
             var result = await _formResponsesService.GetAll<FormResponsesResponseDto, FormResponses>(x => x.ProgramFormId == id);
             if (result == null)
             {
-                return NotFound(Result<List<FormResponsesResponseDto>>.Failure());
+                return NotFound(ResponseModel<List<FormResponsesResponseDto>>.Failure());
             }
-            return Ok(Result<List<FormResponsesResponseDto>>.Success(result));
+            return Ok(ResponseModel<List<FormResponsesResponseDto>>.Success(result));
         }
     }
 }

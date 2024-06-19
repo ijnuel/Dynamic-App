@@ -16,11 +16,11 @@ namespace API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.Forbidden)]
-        [ProducesResponseType(typeof(Result<List<EnumResponseModel>>), 200)]
+        [ProducesResponseType(typeof(ResponseModel<List<EnumResponseModel>>), 200)]
         public IActionResult GetQuestionType()
         {
             var result = EnumUtil.GetEnum<QuestionType>();
-            return Ok(Result<List<EnumResponseModel>>.Success(result));
+            return Ok(ResponseModel<List<EnumResponseModel>>.Success(result));
         }
     }
 }
