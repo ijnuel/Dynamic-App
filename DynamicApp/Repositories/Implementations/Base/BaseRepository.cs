@@ -1,5 +1,4 @@
 ﻿using Core.DbContext;
-using Core.EntityInterfaces.Base;
 using Core.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Abstractions.Base;

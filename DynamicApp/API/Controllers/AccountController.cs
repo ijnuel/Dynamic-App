@@ -1,17 +1,8 @@
 ﻿using Application.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-
-using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Application.Services.Abstractions;
-using Application.Models.Dtos;
 using Application.Models.Dtos.Users;
 
 namespace API.Controllers

@@ -2,7 +2,6 @@
 using Application.Models.Base;
 using Core.EntityInterfaces;
 using Core.EntityModels;
-using Core.Enums;
 
 namespace Application.Models.Dtos.Users
 {

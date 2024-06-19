@@ -1,6 +1,5 @@
 ﻿using Application.Models;
 using Application.Models.Base;
-using Core.EntityInterfaces.Base;
 using Core.EntityModels.Base;
 using System.Linq.Expressions;
 

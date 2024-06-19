@@ -1,6 +1,4 @@
-﻿using Core.Enums;
-
-namespace Core.EntityInterfaces
+﻿namespace Core.EntityInterfaces
 {
     public interface IUser
     {

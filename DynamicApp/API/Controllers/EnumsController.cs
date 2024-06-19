@@ -1,7 +1,6 @@
 ﻿using Application.Helpers;
 using Application.Models;
 using Core.Enums;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 

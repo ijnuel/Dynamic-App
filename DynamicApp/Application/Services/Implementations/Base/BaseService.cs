@@ -2,7 +2,6 @@
 using Application.Models.Base;
 using Application.Services.Abstractions.Base;
 using AutoMapper;
-using Core.EntityInterfaces.Base;
 using Core.EntityModels.Base;
 using Repositories.Abstractions.Base;
 using System.Linq.Expressions;

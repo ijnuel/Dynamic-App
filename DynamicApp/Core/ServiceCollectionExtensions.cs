@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Core.EntityModels;
 using Core.DbContext;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Builder;
 using System.Reflection;
 using Microsoft.Azure.Cosmos;
 using System.Net;

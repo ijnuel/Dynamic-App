@@ -1,14 +1,10 @@
 ﻿using Application.Models;
-using Application.Models.Dtos;
 using Application.Models.Dtos.Users;
 using Application.Services.Abstractions;
 using Application.Services.Abstractions.Base;
 using AutoMapper;
-using Azure;
-using Azure.Core;
 using Core.Dtos;
 using Core.EntityModels;
-using Core.Enums;
 using Core.SessionIdentitier;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

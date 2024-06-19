@@ -1,9 +1,6 @@
 ﻿using Core;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.Abstractions;
 using Repositories.Abstractions.Base;
-using Repositories.Implementations;
-using Repositories.Implementations.Base;
 using System.Reflection;
 
 namespace Repositories

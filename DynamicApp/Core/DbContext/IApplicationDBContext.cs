@@ -1,5 +1,4 @@
-﻿using Core.EntityInterfaces.Base;
-using Core.EntityModels;
+﻿using Core.EntityModels;
 using Core.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

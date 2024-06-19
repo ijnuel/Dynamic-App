@@ -1,13 +1,5 @@
-﻿using Core.EntityInterfaces;
-using Core.EntityModels;
-using Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using Core.EntityModels;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Dtos
 {

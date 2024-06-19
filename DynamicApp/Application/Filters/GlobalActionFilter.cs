@@ -1,15 +1,4 @@
-﻿using Application.Models;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Collections;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Core.SessionIdentitier;
 
 namespace Application.Filters

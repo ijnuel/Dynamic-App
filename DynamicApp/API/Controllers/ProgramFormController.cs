@@ -3,7 +3,6 @@ using Application.Models.Dtos;
 using Application.Services.Abstractions;
 using Core.EntityModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {

@@ -1,8 +1,6 @@
 using Application;
 using Application.Filters;
 using Core;
-using Core.DbContext;
-using Microsoft.OpenApi.Models;
 using Repositories;
 
 var builder = WebApplication.CreateBuilder(args);

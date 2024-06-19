@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Application.Models;
-using Core.EntityInterfaces.Base;
 using Core.EntityModels.Base;
 using Application.Models.Base;
-using Microsoft.AspNetCore.Authorization;
 using Application.Services.Abstractions.Base;
 
 namespace API.Controllers.Base

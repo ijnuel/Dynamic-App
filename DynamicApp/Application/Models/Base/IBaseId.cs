@@ -1,25 +1,8 @@
-﻿using Application.Models.Dtos;
-using Core.SessionIdentitier;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Application.Models.Base
 {
     public interface IIdentityBase { }
-    /*public class BaseValidator : AbstractValidator<IIdentityBase>
-    {
-        private readonly ISessionIdentifier _sessionIdentifier;
-        public BaseValidator(ISessionIdentifier sessionIdentifier)
-        {
-            _sessionIdentifier = sessionIdentifier;
-
-            _sessionIdentifier.GetUserDetails();
-        }
-    }*/
 
 
     public interface IBaseId : IIdentityBase
@@ -31,7 +14,6 @@ namespace Application.Models.Base
         public BaseIdValidator()
         {
             RuleFor(x => x.Id).NotNull().NotEmpty();
-            //Include(new BaseValidator());
         }
     }
 
@@ -45,7 +27,6 @@ namespace Application.Models.Base
         public BaseNameValidator()
         {
             RuleFor(x => x.Name).NotNull().NotEmpty();
-            //Include(new BaseValidator());
         }
     }
 }

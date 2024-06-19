@@ -1,11 +1,8 @@
 ﻿using Application.Models.Dtos.Users;
 using Application.Services.Abstractions;
-using Application.Services.Implementations;
 using Core.Data;
 using Core.DbContext;
-using Core.EntityModels;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

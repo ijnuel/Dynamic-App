@@ -1,5 +1,4 @@
-﻿using Core.EntityInterfaces.Base;
-using Core.EntityModels;
+﻿using Core.EntityModels;
 using Core.EntityModels.Base;
 using Core.Helpers;
 using Core.SessionIdentitier;
@@ -7,13 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Security.AccessControl;
 
 namespace Core.DbContext
 {
