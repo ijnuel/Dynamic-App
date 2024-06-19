@@ -57,24 +57,24 @@ namespace Application.Models.Dtos
     {
         public DynamicQuestionValidator()
         {
-            var message = "An Error Occured!";
+            List<string> errorMessages = new();
+            RuleFor(x => x.Question).NotNull().NotEmpty();
             RuleFor(x => x).Must(question =>
             {
                 if (question.Type == QuestionType.Dropdown || question.Type == QuestionType.MultipleChoice)
                 {
                     if (!question.Choices.Any())
                     {
-                        message = $"Please include choices for '{question.Question}'";
-                        return false;
+                        errorMessages.Add($"Please include choices for '{question.Question}'");
                     }
                 }
                 if (question.Type == QuestionType.MultipleChoice && question.MaxChoiceAllowed <= 0)
                 {
-                    message = $"Max choice allowed for '{question.Question}' must be greater than zero!";
-                    return false;
+                    errorMessages.Add($"Max choice allowed for '{question.Question}' must be greater than zero");
                 }
-                return true;
-            }).WithMessage(message);
+
+                return !errorMessages.Any();
+            }).WithMessage(x => string.Join(" | ", errorMessages));
         }
     }
     #endregion

@@ -1,5 +1,6 @@
 ﻿using Core.EntityInterfaces;
 using Core.EntityModels.Base;
+using Core.Enums;
 
 namespace Core.EntityModels
 {
@@ -11,6 +12,8 @@ namespace Core.EntityModels
     public class QuestionAnswer : IQuestionAnswerSchema
     {
         public string Question { get; set; }
+        public QuestionType QuestionType { get; set; }
+        public bool IsMandatory { get; set; }
         public string Answer { get; set; }
     }
 }

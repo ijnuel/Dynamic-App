@@ -120,7 +120,7 @@ namespace Core.DbContext
         public async Task<bool> Exists<TEntity>(Expression<Func<TEntity, bool>> query) where TEntity : BaseEntity
         {
             var _dbSet = GetDbSet<TEntity>();
-            return await _dbSet?.AnyAsync(query);
+            return (await _dbSet?.FirstOrDefaultAsync(query) != null);
         }
 
         public async Task<int> Count<TEntity>(Expression<Func<TEntity, bool>> query) where TEntity : BaseEntity

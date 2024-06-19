@@ -31,21 +31,24 @@ namespace Application.Models.Dtos
     {
         public ProgramFormValidator()
         {
-            var message = $"Please add form sections!";
-            RuleFor(x => x.Sections).NotNull().NotEmpty().Must(sections =>
+            List<string> errorMessages = new();
+            RuleFor(x => x.Sections).NotNull().NotEmpty();
+            RuleFor(x => x.ProgramTitle).NotNull().NotEmpty();
+            RuleFor(x => x.ProgramDescription).NotNull().NotEmpty();
+            RuleFor(x => x).Must(programForm =>
             {
                 FormSectionValidator validationRules = new FormSectionValidator();
-                foreach (var section in sections)
+                foreach (var section in programForm.Sections)
                 {
                     var validationResult = validationRules.Validate(section);
                     if (!validationResult.IsValid)
                     {
-                        message = string.Join("||", validationResult.Errors.Select(x => x.ErrorMessage));
-                        return false;
+                        errorMessages.AddRange(validationResult.Errors.Select(x => x.ErrorMessage));
                     }
                 }
-                return true;
-            }).NotEmpty().WithMessage(message);
+
+                return !errorMessages.Any();
+            }).NotEmpty().WithMessage(x => string.Join(" | ", errorMessages));
         }
     }
 

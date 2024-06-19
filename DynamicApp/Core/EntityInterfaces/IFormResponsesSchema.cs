@@ -1,4 +1,6 @@
-﻿namespace Core.EntityInterfaces
+﻿using Core.Enums;
+
+namespace Core.EntityInterfaces
 {
     public interface IFormResponsesSchema
     {
@@ -7,6 +9,8 @@
     public interface IQuestionAnswerSchema
     {
         public string Question { get; set; }
+        public QuestionType QuestionType { get; set; }
+        public bool IsMandatory { get; set; }
         public string Answer { get; set; }
     }
 }

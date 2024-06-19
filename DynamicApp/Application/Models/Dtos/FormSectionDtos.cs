@@ -18,26 +18,26 @@ namespace Application.Models.Dtos
     {
         public FormSectionValidator()
         {
-            var message = "An Error Occured!";
+            List<string> errorMessages = new();
+            RuleFor(x => x.Title).NotNull().NotEmpty();
             RuleFor(x => x).Must(section =>
             {
                 if (!section.Questions?.Any() ?? false)
                 {
-                    message = $"Please add questions to {section.Title}";
-                    return false;
+                    errorMessages.Add($"Please add questions to {section.Title}");
                 }
                 DynamicQuestionValidator validationRules = new DynamicQuestionValidator();
-                foreach (var question in section.Questions)
+                foreach (var question in section.Questions ?? new())
                 {
                     var validationResult = validationRules.Validate(question);
                     if (!validationResult.IsValid)
                     {
-                        message = string.Join("||", validationResult.Errors.Select(x => x.ErrorMessage));
-                        return false;
+                        errorMessages.AddRange(validationResult.Errors.Select(x => x.ErrorMessage));
                     }
                 }
-                return true;
-            }).WithMessage(message);
+
+                return !errorMessages.Any();
+            }).WithMessage(x => string.Join(" | ", errorMessages));
         }
     }
     #endregion
