@@ -18,9 +18,41 @@ namespace Application.Models.Dtos
     {
         public QuestionType Type { get; set; }
         public string Question { get; set; }
-        public List<string> Choices { get; set; }
-        public bool IsOtherOptionEnabled { get; set; }
-        public int MaxChoiceAllowed { get; set; }
+        private List<string> _choices;
+        public List<string> Choices { 
+            get
+            {
+                return _choices;
+            } 
+            set
+            {
+                _choices = Type == QuestionType.YesNo || Type == QuestionType.MultipleChoice ? value : new();
+            }
+        }
+        private bool _isOtherOptionEnabled { get; set; }
+        public bool IsOtherOptionEnabled
+        {
+            get
+            {
+                return _isOtherOptionEnabled;
+            }
+            set
+            {
+                _isOtherOptionEnabled = Type == QuestionType.YesNo || Type == QuestionType.MultipleChoice ? value : false;
+            }
+        }
+        private int _maxChoiceAllowed { get; set; }
+        public int MaxChoiceAllowed
+        {
+            get
+            {
+                return _maxChoiceAllowed;
+            }
+            set
+            {
+                _maxChoiceAllowed = Type == QuestionType.MultipleChoice ? value : 0;
+            }
+        }
         public bool IsMandatory { get; set; }
         public bool IsInternal { get; set; }
         public bool IsHidden { get; set; }
